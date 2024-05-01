@@ -71,7 +71,7 @@ const link = document.querySelector('a[href^="http"]');
 link.setAttribute('href', 'https://www.google.com');
 
 // Verifique a distância da primeira imagem
-// em relação ao topo da página
+// em relação ao topo da página 
 const img = document.querySelector('img');
 const imgTop = img.offsetTop;
 console.log(imgTop);
@@ -96,7 +96,7 @@ window.onload = function(){
 // o mínimo recomendado para telas utilizadas
 // com o dedo. (48px/48px de acordo com o google)
 const links2 = document.querySelectorAll('a');
-console.log(links2);
+console.log(links2);'----------'
 
 links2.forEach((link) => {
     const linkWidth = link.offsetWidth;
@@ -115,4 +115,55 @@ if (browserSmall){
     const menu = document.querySelector('.menu');
     menu.classList.add('menu-mobile');
 }
+
+// Quando o usuário clicar nos links internos do site,
+// adicione a classe ativo ao item clicado e remova dos
+// demais itens caso eles possuam a mesma. Previna
+// o comportamento padrão desses links
+const linksInternos = document.querySelectorAll('a[href^="#"]');
+
+function handleLink(event){
+    event.preventDefault();
+    linksInternos.forEach((link) => {
+        link.classList.remove('ativo');
+    });
+    this.classList.add('ativo');
+}
+
+linksInternos.forEach((link) =>{
+    link.addEventListener('click', handleLink);
+})
+
+// Selecione todos os elementos do site começando a partir do body,
+// ao clique mostre exatamente quais elementos estão sendo clicados
+const todosElementos = document.querySelectorAll('body *');
+
+function handleElemento(event){
+    console.log(this);
+}
+
+todosElementos.forEach((elemento) => {
+    elemento.addEventListener('click', handleElemento);
+});
+
+// Utilizando o código anterior, ao invés de mostrar no console,
+// remova o elemento que está sendo clicado, o método remove() remove um elemento
+const todosElementos2 = document.querySelectorAll('body *');
+
+function handleElemento2(event){
+    this.remove();
+}
+
+todosElementos2.forEach((elemento) => {
+    elemento.addEventListener('click', handleElemento2);
+});
+
+// Se o usuário clicar na tecla (t), aumente todo o texto do site. 
+//function handleClickT(event){
+   //  if(event.key === 't'){
+
+    //}
+//}
+
+//window.addEventListener('keydown', handleClickT);
 
