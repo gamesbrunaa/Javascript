@@ -167,3 +167,4 @@ todosElementos2.forEach((elemento) => {
 
 //window.addEventListener('keydown', handleClickT);
 
+
